@@ -1,50 +1,70 @@
+# Getting Started with Create React App
 
-# HiPlatform Desafio de Frontend
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-No nosso exercício de frontend, pedimos que você implemente uma simples árvore de itens, na qual cada item pode ter vários itens encadeados (itens filhos), conforme o exemplo abaixo:
+## Available Scripts
 
-![tree](https://user-images.githubusercontent.com/13091635/129045214-81f3f1c8-8c56-4b32-8200-7734a413da98.gif)
+In the project directory, you can run:
 
-> ‼️ Você não precisa seguir fielmente a interface do gif acima, é apenas um exemplo. Aproveite para nos mostrar o quanto você pode melhorar a usabilidade do componente!
+### `npm start`
 
-Junto com este repositório há um arquivo `data.json` contendo os dados para renderizar a árvore. A estrutura de um único item é esta:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```
- "1": {
-    "id": "a853dddc-b639-41e6-a876-958b1e7f65d1",
-    "name": "Harald Svante August",
-    "children": {}
-  }
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-#### [](https://github.com/HiPlatform/prova-frontend#behaviour)Comportamento:
-- Cada item deve ter um checkbox que pode ser marcado/desmarcado.
-- Quando o usuário marcar/desmarcar o checkbox de um item que tenha filhos, o estado deve ser cascateado a todos os seus descendentes. 
-- Quando o usuário marcar um ou mais filhos, e até que marque todos, o estado do checkbox pai deve ser alterado para `indeterminate`.
-- Quando o usuário marcar/desmarcar todos os filhos, o estado do checkbox pai deve replicar o dos filhos.
-- O usuário deve ser capaz de mostrar e esconder os itens internos de um item pai.
+### `npm test`
 
-#### [](https://github.com/HiPlatform/prova-frontend#freedom)Liberdade:
-- Você pode usar qualquer tecnologia que melhor lhe servir. 
-  > Na Hi usamos majoritariamente React. Isso não significa que vamos priorizar testes em React em detrimento de outros frameworks/vanilla, mas se estiver na dúvida de qual escolher, sugerimos React 🙂 
-- Você é livre para estruturar o projeto da maneira que achar mais organizada. 
-- Você é livre para implementar o código em qualquer padrão que achar mais adequado. 
-- Você pode adicionar funcionalidades ao componente como desejar, mas não fuja da simplicidade.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### [](https://github.com/HiPlatform/prova-frontend#nice-to-have)Nós valorizamos atenção para os seguintes pontos:
-- Acoplamento e coesão
-- Testes 
-- Performance 
-- Recuperação de estado (por exemplo: recuperar estado dos checkboxes após um page refresh) 
-- Experiência do usuário (área de clique, scroll jump, etc.) 
+### `npm run build`
 
-## Dica de amigo
-Entendemos que no dia-a-dia podemos usar implementações prontas para os problemas que aparecem, porém, queremos avaliar sua tomada de decisão, raciocínio lógico e resolução de problemas. O _core_ deste teste é a árvore de elementos e os estados do checkbox, portanto, pedimos que não use componentes prontos que implementem essas funcionalidades.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Atente-se aos requisitos funcionais (comportamento) e aos diferenciais que serão valorizados.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Nem sempre a gente consegue fazer tudo no prazo combinado, se você precisar de mais tempo converse com a pessoa responsável pela vaga e evite entregar o teste inacabado!
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Divirta-se!
+### `npm run eject`
 
-![office](https://media.giphy.com/media/bcfTZ4rtZrOhiAvh4v/giphy.gif)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
