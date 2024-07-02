@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import Checkbox from "../Checkbox";
+
 import "./styles.css";
+
 export default function List({ items, updateItem }) {
   const [idsToOpen, setIdsToOpen] = useState([]);
 
@@ -11,8 +14,10 @@ export default function List({ items, updateItem }) {
         return [...prevItems, newItem];
       }
     });
+  };
 
-    updateItem(newItem);
+  const handleUpdate = (newStatus, id) => {
+    updateItem(newStatus, id);
   };
 
   return (
@@ -26,7 +31,11 @@ export default function List({ items, updateItem }) {
                   className="checkbox"
                   style={{ paddingLeft: `${item.level * 25}px` }}
                 >
-                  check
+                  <Checkbox
+                    id={item.id}
+                    checked={item.checked}
+                    updateItem={handleUpdate}
+                  />
                 </div>
                 <span>{item.name}</span>
               </div>
@@ -38,9 +47,7 @@ export default function List({ items, updateItem }) {
             </div>
 
             {idsToOpen.find((id) => id === item.id) ? (
-              <div>
-                <List items={item.children} updateItem={updateItem} />
-              </div>
+              <List items={item.children} updateItem={updateItem} />
             ) : null}
           </div>
         );
