@@ -16,8 +16,8 @@ export default function List({ items, updateItem }) {
     });
   };
 
-  const handleUpdate = (newStatus, id) => {
-    updateItem(newStatus, id);
+  const handleUpdate = (checked, id) => {
+    updateItem(!checked, id);
   };
 
   return (
@@ -26,16 +26,15 @@ export default function List({ items, updateItem }) {
         return (
           <div key={item.id}>
             <div className="list-item">
-              <div className="left">
+              <div
+                onClick={() => handleUpdate(item.checked, item.id)}
+                className="left"
+              >
                 <div
                   className="checkbox"
-                  style={{ paddingLeft: `${item.level * 25}px` }}
+                  style={{ paddingLeft: `${item.level * 20}px` }}
                 >
-                  <Checkbox
-                    id={item.id}
-                    checked={item.checked}
-                    updateItem={handleUpdate}
-                  />
+                  <Checkbox id={item.id} checked={item.checked} />
                 </div>
                 <span>{item.name}</span>
               </div>

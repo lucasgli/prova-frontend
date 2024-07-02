@@ -15,18 +15,11 @@ export default function Checkbox({ checked, id, updateItem, ...rest }) {
     }
   }, [checked]);
 
-  const handleChangeValue = (newStatus) => {
-    updateItem(newStatus, id);
-  };
-
   return (
     <input
       {...rest}
       ref={inputRef}
       type="checkbox"
-      onChange={() => {
-        handleChangeValue(inputRef.current.checked);
-      }}
     />
   );
 }
