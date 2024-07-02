@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import Checkbox from "../Checkbox";
 
 import "./styles.css";
@@ -27,6 +27,8 @@ export default function List({ items, updateItem }) {
   return (
     <div>
       {Object.values(items).map((item) => {
+        const isAnimating = currentAnimatingId === item.id;
+
         return (
           <div key={item.id}>
             <div className="list-item">
@@ -51,14 +53,18 @@ export default function List({ items, updateItem }) {
                           ? "blue"
                           : "",
                       }}
+                      icon={
+                        idsToOpen.find((id) => id === item.id)
+                          ? faChevronUp
+                          : faChevronDown
+                      }
                       onClick={() => handleClick(item.id)}
-                      icon={faChevronDown}
                       className={
-                        currentAnimatingId
+                        isAnimating
                           ? idsToOpen.find((id) => id === item.id)
                             ? "rotate-up"
                             : "rotate-down"
-                          : ""
+                          : null
                       }
                     />
                   </div>

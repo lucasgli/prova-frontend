@@ -20,7 +20,7 @@
 }
 
 .right{
-    width: 5%;
+    width: 10%;
     max-width: 150px;
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(-180deg);
+      transform: rotate(-360deg);
     }
   }
   
@@ -46,9 +46,9 @@
   }
   
   .rotate-up {
-    animation: rotateUp 0.5s forwards;
+    animation: rotateUp 1s forwards;
   }
   
   .rotate-down {
-    animation: rotateDown 0.5s forwards;
+    animation: rotateDown 1s forwards;
   }
