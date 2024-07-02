@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Checkbox from "../Checkbox";
 
 import "./styles.css";
 
 export default function List({ items, updateItem }) {
   const [idsToOpen, setIdsToOpen] = useState([]);
+  const [currentAnimatingId, setCurrentAnimatingId] = useState(null);
 
   const handleClick = (newItem) => {
+    setCurrentAnimatingId(newItem);
     setIdsToOpen((prevItems) => {
       if (prevItems.includes(newItem)) {
         return prevItems.filter((item) => item !== newItem);
@@ -32,7 +36,7 @@ export default function List({ items, updateItem }) {
               >
                 <div
                   className="checkbox"
-                  style={{ paddingLeft: `${item.level * 20}px` }}
+                  style={{ paddingLeft: `${item.level * 30}px` }}
                 >
                   <Checkbox id={item.id} checked={item.checked} />
                 </div>
@@ -40,13 +44,32 @@ export default function List({ items, updateItem }) {
               </div>
               <div className="right">
                 {Object.values(item.children).length ? (
-                  <div onClick={() => handleClick(item.id)}>icon</div>
+                  <div>
+                    <FontAwesomeIcon
+                      style={{
+                        color: idsToOpen.find((id) => id === item.id)
+                          ? "blue"
+                          : "",
+                      }}
+                      onClick={() => handleClick(item.id)}
+                      icon={faChevronDown}
+                      className={
+                        currentAnimatingId
+                          ? idsToOpen.find((id) => id === item.id)
+                            ? "rotate-up"
+                            : "rotate-down"
+                          : ""
+                      }
+                    />
+                  </div>
                 ) : null}
               </div>
             </div>
 
             {idsToOpen.find((id) => id === item.id) ? (
-              <List items={item.children} updateItem={updateItem} />
+              <div>
+                <List items={item.children} updateItem={updateItem} />{" "}
+              </div>
             ) : null}
           </div>
         );
