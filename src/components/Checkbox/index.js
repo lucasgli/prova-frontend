@@ -5,11 +5,12 @@ export default function Checkbox({ checked, id, updateItem, ...rest }) {
 
   useEffect(() => {
     if (inputRef.current) {
+      inputRef.current.checked = checked;
+      
       if (checked === null) {
         inputRef.current.indeterminate = true;
-        inputRef.current.checked = false;
       } else {
-        inputRef.current.checked = checked;
+        inputRef.current.indeterminate = false;
       }
     }
   }, [checked]);
