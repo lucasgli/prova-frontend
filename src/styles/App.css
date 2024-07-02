@@ -5,3 +5,11 @@
   align-items: center;
 }
 
+.box {
+  width: 90%;
+  max-width: 850px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+}
