@@ -44,8 +44,11 @@ export default function List({ items, updateItem }) {
                 </div>
                 <span>{item.name}</span>
               </div>
-              <div className="right">
-                {Object.values(item.children).length ? (
+              {Object.values(item.children).length ? (
+                <div
+                  className="right"
+                  onClick={() => handleClick(item.id)}
+                >
                   <div>
                     <FontAwesomeIcon
                       style={{
@@ -58,7 +61,6 @@ export default function List({ items, updateItem }) {
                           ? faChevronUp
                           : faChevronDown
                       }
-                      onClick={() => handleClick(item.id)}
                       className={
                         isAnimating
                           ? idsToOpen.find((id) => id === item.id)
@@ -68,8 +70,8 @@ export default function List({ items, updateItem }) {
                       }
                     />
                   </div>
-                ) : null}
-              </div>
+                </div>
+              ) : null}
             </div>
 
             {idsToOpen.find((id) => id === item.id) ? (

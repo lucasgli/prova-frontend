@@ -20,11 +20,11 @@
 }
 
 .right{
-    width: 10%;
-    max-width: 150px;
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right: 15px;
 }
 
 @keyframes rotateUp {
