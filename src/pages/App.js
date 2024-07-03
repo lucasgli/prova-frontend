@@ -1,5 +1,6 @@
 import List from "../components/List";
 import data from "../data/data.json";
+import LocalStorage from "../helpers/LocalStorage";
 import React, { useState, useEffect } from "react";
 
 import "../styles/App.css";
@@ -17,13 +18,18 @@ function App() {
     }
   };
 
-  const handleAddValue = () => {
-    const newData = { ...displayData };
-    Object.values(newData).forEach((rootNode) => {
-      addValueToNodeAndChildren(rootNode);
-    });
+  const createDisplayData = () => {
+    const updatedList = LocalStorage.get("updatedList");
+    if (updatedList) {
+      setDisplayData(updatedList);
+    } else {
+      const newData = { ...displayData };
+      Object.values(newData).forEach((rootNode) => {
+        addValueToNodeAndChildren(rootNode);
+      });
 
-    setDisplayData(newData);
+      setDisplayData(newData);
+    }
   };
 
   const checkParentStatus = (node) => {
@@ -49,7 +55,6 @@ function App() {
     }
   };
 
-
   const updateValueToNodeAndChildren = (node, targetId, value) => {
     if (node.id === targetId) {
       node.checked = value;
@@ -67,7 +72,6 @@ function App() {
     }
   };
 
-
   const handleUpdateValueToNode = (targetId, newValue) => {
     const newData = { ...displayData };
 
@@ -77,15 +81,15 @@ function App() {
     });
 
     setDisplayData(newData);
+    LocalStorage.set("updatedList", newData);
   };
 
-  
   const updateItem = (newValue, id) => {
     handleUpdateValueToNode(id, newValue);
   };
 
   useEffect(() => {
-    handleAddValue();
+    createDisplayData();
   }, []);
 
   return (
