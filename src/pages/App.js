@@ -68,11 +68,11 @@ function App() {
   };
 
 
-  const handleUpdateValueToNode = (targetId, newStatus) => {
-    const newData = { ...data };
+  const handleUpdateValueToNode = (targetId, newValue) => {
+    const newData = { ...displayData };
 
     Object.values(newData).forEach((rootNode) => {
-      updateValueToNodeAndChildren(rootNode, targetId, newStatus);
+      updateValueToNodeAndChildren(rootNode, targetId, newValue);
       checkParentStatus(rootNode);
     });
 
@@ -80,8 +80,8 @@ function App() {
   };
 
   
-  const updateItem = (newStatus, id) => {
-    handleUpdateValueToNode(id, newStatus);
+  const updateItem = (newValue, id) => {
+    handleUpdateValueToNode(id, newValue);
   };
 
   useEffect(() => {
