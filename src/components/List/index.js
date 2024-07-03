@@ -27,13 +27,13 @@ export default function List({ items, updateItem }) {
   };
 
   useEffect(() => {
-    if (currentAnimatingId && itemRefs.current[currentAnimatingId]) {
+    if (currentAnimatingId && itemRefs.current[currentAnimatingId] && idsToOpen.find((id) => id === currentAnimatingId)) {
       itemRefs.current[currentAnimatingId].scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "end",
       });
     }
-  }, [currentAnimatingId]);
+  }, [currentAnimatingId, idsToOpen]);
 
   return (
     <div>
