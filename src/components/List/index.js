@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ArrowIcon from "../ArrowIcon";
 import Checkbox from "../Checkbox";
 
@@ -7,6 +7,9 @@ import "./styles.css";
 export default function List({ items, updateItem }) {
   const [idsToOpen, setIdsToOpen] = useState([]);
   const [currentAnimatingId, setCurrentAnimatingId] = useState(null);
+
+  const itemRefs = useRef({});
+
 
   const handleClick = (newItem) => {
     setCurrentAnimatingId(newItem);
@@ -23,13 +26,22 @@ export default function List({ items, updateItem }) {
     updateItem(!checked, id);
   };
 
+  useEffect(() => {
+    if (currentAnimatingId && itemRefs.current[currentAnimatingId]) {
+      itemRefs.current[currentAnimatingId].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [currentAnimatingId]);
+
   return (
     <div>
       {Object.values(items).map((item) => {
         const isAnimating = currentAnimatingId === item.id;
 
         return (
-          <div key={item.id}>
+          <div key={item.id} ref={(el) => (itemRefs.current[item.id] = el)}>
             <div className="list-item">
               <div
                 onClick={() => handleUpdate(item.checked, item.id)}
