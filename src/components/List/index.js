@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import ArrowIcon from "../ArrowIcon";
 import Checkbox from "../Checkbox";
 
 import "./styles.css";
@@ -45,39 +44,17 @@ export default function List({ items, updateItem }) {
                 <span>{item.name}</span>
               </div>
               {Object.values(item.children).length ? (
-                <div
-                  className="right"
-                  onClick={() => handleClick(item.id)}
-                >
-                  <div>
-                    <FontAwesomeIcon
-                      style={{
-                        color: idsToOpen.find((id) => id === item.id)
-                          ? "blue"
-                          : "",
-                      }}
-                      icon={
-                        idsToOpen.find((id) => id === item.id)
-                          ? faChevronUp
-                          : faChevronDown
-                      }
-                      className={
-                        isAnimating
-                          ? idsToOpen.find((id) => id === item.id)
-                            ? "rotate-up"
-                            : "rotate-down"
-                          : null
-                      }
-                    />
-                  </div>
+                <div className="right" onClick={() => handleClick(item.id)}>
+                  <ArrowIcon
+                    isAnimating={isAnimating}
+                    isOpen={idsToOpen.find((id) => id === item.id)}
+                  />
                 </div>
               ) : null}
             </div>
 
             {idsToOpen.find((id) => id === item.id) ? (
-              <div>
-                <List items={item.children} updateItem={updateItem} />{" "}
-              </div>
+              <List items={item.children} updateItem={updateItem} />
             ) : null}
           </div>
         );
