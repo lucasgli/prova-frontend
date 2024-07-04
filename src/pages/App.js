@@ -93,9 +93,9 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container" data-testid="app">
       <div className="box">
-        <List items={displayData} updateItem={updateItem} />
+        <List data-testid="list" items={displayData} updateItem={updateItem} />
       </div>
     </div>
   );
