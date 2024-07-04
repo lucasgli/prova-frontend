@@ -36,16 +36,17 @@ export default function List({ items, updateItem }) {
   }, [currentAnimatingId, idsToOpen]);
 
   return (
-    <div>
+    <div data-testid="list">
       {Object.values(items).map((item) => {
         const isAnimating = currentAnimatingId === item.id;
 
         return (
-          <div key={item.id} ref={(el) => (itemRefs.current[item.id] = el)}>
+          <div key={item.id} ref={(el) => (itemRefs.current[item.id] = el)} data-testid={`list-item-${item.id}`}>
             <div className="list-item">
               <div
                 onClick={() => handleUpdate(item.checked, item.id)}
                 className="left"
+                data-testid={`list-item-action-${item.id}`}
               >
                 <div
                   className="checkbox"
@@ -56,7 +57,7 @@ export default function List({ items, updateItem }) {
                 <span>{item.name}</span>
               </div>
               {Object.values(item.children).length ? (
-                <div className="right" onClick={() => handleClick(item.id)}>
+                <div className="right" onClick={() => handleClick(item.id)} data-testid={`arrow-${item.id}`}>
                   <ArrowIcon
                     isAnimating={isAnimating}
                     isOpen={idsToOpen.find((id) => id === item.id)}
