@@ -10,7 +10,7 @@ export default function ArrowIcon({ isOpen, isAnimating }) {
       data-testid="arrow-icon"
       style={{
         color: isOpen ? "blue" : "",
-        transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+        transform: isOpen ? "rotate(180deg)" : "",
       }}
       icon={faChevronDown}
       className={isAnimating ? (isOpen ? "rotate-up" : "rotate-down") : null}
