@@ -20,6 +20,7 @@ export default function Checkbox({ checked, id, updateItem, ...rest }) {
       {...rest}
       ref={inputRef}
       type="checkbox"
+      data-testid="checkbox"
     />
   );
 }
