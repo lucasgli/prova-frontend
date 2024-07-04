@@ -7,6 +7,7 @@ import "./styles.css";
 export default function ArrowIcon({ isOpen, isAnimating }) {
   return (
     <FontAwesomeIcon
+      data-testid="arrow-icon"
       style={{
         color: isOpen ? "blue" : "",
         transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
